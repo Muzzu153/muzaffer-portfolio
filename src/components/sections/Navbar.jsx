@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import PhysicalButton from "../ui/PhysicalButton";
-import Logo from "../ui/Logo";
 import { personalData } from "../../data/personal";
 
 const Navbar = () => {
