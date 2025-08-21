@@ -1,0 +1,45 @@
+  <svg
+      viewBox="0 0 100 100" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect 
+        x="12" 
+        y="12" 
+        width="80" 
+        height="80" 
+        fill="#000000" 
+      />
+
+      <rect
+        x="4"
+        y="4"
+        width="80"
+        height="80"
+        fill="#FECA57" 
+        stroke="#000000"
+        strokeWidth="4"
+      />
+
+    
+<!-- Thicker stroke behind -->
+<path
+  d="M 30 70 L 30 30 L 50 50 L 70 30 L 70 70"
+  stroke="#000000"
+  strokeWidth="20"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  vector-effect="non-scaling-stroke"
+/>
+
+<path
+  d="M 32 72 L 32 36 L 48 52 L 68 36 L 68 72"
+  fill="#FECA57" 
+  strokeWidth="20"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+/>
+    </svg>
+
+
+
+
