@@ -9,6 +9,10 @@ const Navbar = () => {
 
   const navLinks = [
     {
+      name: "Blog",    // Add the new link
+      href: "/blog"  // This is an internal route, not a hash link
+    },
+    {
       name: "Skills",
       href: "#skills",
     },
@@ -65,10 +69,9 @@ const Navbar = () => {
               href={link.href}
               className={`
                 uppercase text-base p-2 transition-colors
-                ${
-                  activeSection === link.href.substring(1)
-                    ? "bg-highlight border-2 border-dark"
-                    : "hover:text-primary"
+                ${activeSection === link.href.substring(1)
+                  ? "bg-highlight border-2 border-dark"
+                  : "hover:text-primary"
                 }
               `}
             >
