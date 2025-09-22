@@ -1,15 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import PhysicalButton from "../ui/PhysicalButton";
+import NavItem from "./NavItem";
 import { personalData } from "../../data/personal";
+import { href, Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-
-  const navLinks = [
+  const homePagelinks = [
     {
-      name: "Blog",    // Add the new link
+      name: "Blog",
       href: "/blog"  // This is an internal route, not a hash link
     },
     {
@@ -25,6 +25,19 @@ const Navbar = () => {
       href: "#projects",
     },
   ];
+
+  const blogPageLinks = [
+    {
+      name: "home",
+      href: "/home",
+    },
+  ]
+
+  const [navLinks, setNavLinks] = useState(homePagelinks)
+  const [activeSection, setActiveSection] = useState("hero");
+  const location = useLocation();
+
+
 
   // Effect to handle scroll and set active section
   useEffect(() => {
@@ -55,29 +68,32 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+
+
+
+  // Switch nav links based on current page
+  useEffect(() => {
+    if (location.pathname.startsWith("/blog")) {
+      setNavLinks(blogPageLinks);
+    } else {
+      setNavLinks(homePagelinks);
+    }
+    if (location.pathname !== "/" && location.pathname !== "/home") {
+      setActiveSection("hero");
+    }
+  }, [location.pathname, setActiveSection]);
+
+
   return (
     <header className="sticky top-0 z-50 bg-light border-b-4 border-dark border font-press">
       <nav className="max-w-6xl mx-auto px-5 py-3 flex justify-center items-center">
-        {/* Logo */}
-        {/* <Logo /> */}
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`
-                uppercase text-base p-2 transition-colors
-                ${activeSection === link.href.substring(1)
-                  ? "bg-highlight border-2 border-dark"
-                  : "hover:text-primary"
-                }
-              `}
-            >
-              {link.name}
-            </a>
+             <NavItem key={link.name} link={link} activeSection={activeSection} />
           ))}
+
           <PhysicalButton
             href={`mailto:${personalData.email}`}
             variant="primary"
@@ -89,31 +105,37 @@ const Navbar = () => {
 
         {/* Mobile "Command Bar" */}
         <div className="md:hidden w-full flex items-center justify-between gap-4 text-xs">
-          <div className="relative">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="border-4 border-dark px-4 py-3 uppercase bg-white"
-            >
-              Sections
-            </button>
-            {/* Mobile Dropdown Panel */}
-            {isOpen && (
+          {location.pathname.startsWith("/blog") ? (
+            <div className="flex flex-col items-center gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`uppercase text-base p-2 transition-colors ${activeSection === link.href.substring(1)
+                      ? "bg-highlight border-2 border-dark"
+                      : "hover:text-primary"}`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          ) :
+            <div className="relative">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="border-4 border-dark px-4 py-3 uppercase bg-white"
+              >
+                Sections
+              </button>
               <div className="absolute top-full  mt-3 w-30 bg-light border-4 border-dark p-4">
-                <div className="flex flex-col items-center gap-4">
-                  {navLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      className="uppercase p-1"
-                      onClick={handleLinkClick} // Close menu on click
-                    >
-                      {link.name}
-                    </a>
+                < div className="flex flex-col items-center gap-4">
+                  {isOpen && navLinks.map((link) => (
+                     <NavItem key={link.name} link={link} activeSection={activeSection} />
                   ))}
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          }
           <PhysicalButton
             href={`mailto:${personalData.email}`}
             variant="primary"

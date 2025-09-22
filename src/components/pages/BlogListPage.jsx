@@ -41,12 +41,14 @@ const BlogListPage = () => {
 
   return (
     <Section id="blog">
-      <h1 className="text-center font-press text-5xl uppercase mb-16">The Archives</h1>
+    <div>
+      <h1 className="text-center font-press text-2xl uppercase my-8 ">The Archives</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <ArticleCard key={post._id} post={post} />
         ))}
       </div>
+    </div>
     </Section>
   );
 };

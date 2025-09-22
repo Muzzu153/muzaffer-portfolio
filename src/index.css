@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
@@ -7,6 +9,8 @@
 @theme {
   /* Fonts */
   --font-press: "Press Start 2P", cursive;
+  --font-inter: "Inter", cursive;
+  --font-fira: "Fira Code", cursive;
 
   /* text-size */
   --text-xxs: 9px
@@ -28,6 +32,8 @@
   --color-light: #FEF9F3;
   --color-primary-darker: #3aa69d;
   --color-secondary-darker: #d44a4a;
+  --color-spring-green: #00FF7F;
+  --color-red: #FF0000;
 
   /* Box Shadows */
   --shadow-neo: 8px 8px 0px #000000;

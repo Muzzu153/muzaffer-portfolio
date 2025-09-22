@@ -12,7 +12,7 @@ export const personalData = {
   phone: "+91 XXXXX XXXXX",
   social: {
     github: "https://github.com/muzzu153",
-    linkedin: "#",
-    twitter: "#"
+    linkedin: "https://www.linkedin.com/in/muzafferalisyed/",
+    twitter: "https://x.com/Muzzu153"
   }
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { urlFor } from '../../sanityClient'; // Our image helper
 import PhysicalButton from './PhysicalButton';
+import BlogImage from './BlogImage';
 
 const ArticleCard = ({ post }) => {
   if (!post) return null;
@@ -11,11 +12,9 @@ const ArticleCard = ({ post }) => {
       {/* Main Image */}
       {post.mainImage && (
         <Link to={`/blog/${post.slug.current}`}>
-          <img
-            src={urlFor(post.mainImage).width(800).url()}
-            alt={post.mainImage.alt}
-            className="w-full h-56 object-cover"
-          />
+          <div className="w-full object-cover">
+            <BlogImage value={post.mainImage} />
+          </div>
         </Link>
       )}
 
@@ -29,14 +28,14 @@ const ArticleCard = ({ post }) => {
           })}
         </p>
         <Link to={`/blog/${post.slug.current}`}>
-          <h2 className="font-press text-2xl uppercase mb-4 hover:text-primary transition-colors">
+          <h2 className="font-press text-xs sm:text-sm md:text-base uppercase mb-4 hover:text-primary transition-colors">
             {post.title}
           </h2>
         </Link>
-        <p className="font-sans text-base mb-6">
+        {/* <p className="font-sans text-base mb-6">
           {post.excerpt}
-        </p>
-        <PhysicalButton href={`/blog/${post.slug.current}`} variant="primary">
+        </p> */}
+        <PhysicalButton href={`/blog/${post.slug.current}`} variant="primary" size="p-2 text-xs sm:text-sm lg:text-base xl:text-lg" >
           Read More
         </PhysicalButton>
       </div>
