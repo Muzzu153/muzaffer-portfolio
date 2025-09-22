@@ -6,20 +6,25 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node ./src/scripts/generate-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview"
+    
   },
   "dependencies": {
+    "@forge42/seo-tools": "^1.4.5",
     "@portabletext/react": "^4.0.3",
     "@sanity/client": "^7.11.2",
     "@sanity/image-url": "^1.2.0",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/vite": "^4.1.12",
+    "fs": "^0.0.1-security",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.1",
     "react-syntax-highlighter": "^15.6.6",
+    "sitemap": "^8.0.0",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
