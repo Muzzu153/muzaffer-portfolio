@@ -91,7 +91,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-             <NavItem key={link.name} link={link} activeSection={activeSection} />
+            <NavItem key={link.name} link={link} activeSection={activeSection} />
           ))}
 
           <PhysicalButton
@@ -112,8 +112,8 @@ const Navbar = () => {
                   key={link.name}
                   to={link.href}
                   className={`uppercase text-base p-2 transition-colors ${activeSection === link.href.substring(1)
-                      ? "bg-highlight border-2 border-dark"
-                      : "hover:text-primary"}`}
+                    ? "bg-highlight border-2 border-dark"
+                    : "hover:text-primary"}`}
                 >
                   {link.name}
                 </Link>
@@ -127,13 +127,15 @@ const Navbar = () => {
               >
                 Sections
               </button>
-              <div className="absolute top-full  mt-3 w-30 bg-light border-4 border-dark p-4">
-                < div className="flex flex-col items-center gap-4">
-                  {isOpen && navLinks.map((link) => (
-                     <NavItem key={link.name} link={link} activeSection={activeSection} />
-                  ))}
+              {isOpen && (
+                <div className="absolute top-full mt-3 w-30 bg-light border-4 px-16 border-dark py-4">
+                  < div className="flex flex-col items-center gap-4">
+                    {navLinks.map((link) => (
+                      <NavItem key={link.name} link={link} activeSection={activeSection} className="text-sm" />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           }
           <PhysicalButton

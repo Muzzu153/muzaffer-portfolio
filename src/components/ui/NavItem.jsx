@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const NavItem = ({ link, activeSection }) => {
+const NavItem = ({ link, activeSection, className }) => {
     const isActive = activeSection === link.href.replace(/^\/|^#/, "");
 
     const baseClasses = `uppercase text-base p-2 transition-colors
-    ${isActive ? "bg-highlight border-2 border-dark" : "hover:text-primary"}`;
+    ${isActive ? "bg-highlight border-2 border-dark" : "hover:text-primary"} ${className}`;
 
     if (link.href.startsWith("/")) {
         return (
