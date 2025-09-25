@@ -59,9 +59,9 @@ const BlogPostPage = () => {
             code: CodeBlock,
         },
         block: {
-            h2: ({ children }) => <h2 id={slugify(children)} className="font-inter font-bold text-3xl mt-12 mb-2">{children}</h2>,
-            h3: ({ children }) => <h3 id={slugify(children)} className="font-inter font-bold text-3xl mt-10 mb-4">{children}</h3>,
-            h4: ({ children }) => <h3 id={slugify(children)} className="font-inter font-bold text-2xl mt-2 mb-4">{children}</h3>,
+            h2: ({ children }) => <h2 id={slugify(children)} className="font-bold text-3xl mt-12 mb-2">{children}</h2>,
+            h3: ({ children }) => <h3 id={slugify(children)} className="font-bold text-3xl mt-10 mb-4">{children}</h3>,
+            h4: ({ children }) => <h3 id={slugify(children)} className="font-bold text-2xl mt-2 mb-4">{children}</h3>,
             lead: ({ children }) => <p className="text-xl leading-relaxed">{children}</p>, // Custom lead paragraph style
             small: ({ children }) => <p className="text-sm text-gray-600">{children}</p>, // Custom small text style
             blockquote: ({ children }) => (
@@ -105,13 +105,13 @@ const BlogPostPage = () => {
 
                 <div className="text-left md:mb-8 lg:mb-12 max-w-3xl ">
                     <h1 className="font-press text:xl md:text-2xl lg:text-3xl">{post.title}</h1>
-                    <p className="font-sans text-lg mt-4 text-gray-600">{new Date(post.publishedAt).toLocaleDateString()}</p>
+                    <p className="text-lg mt-4 text-gray-600">{new Date(post.publishedAt).toLocaleDateString()}</p>
                 </div>
 
                 <div className="flex flex-col lg:flex-row lg:gap-15 ">
                     <div className="w-full  lg:w-3/4 md:pr-30 text-left mt-8 lg:mt-0">
                         {post.mainImage && <div className="mb-12"><BlogImage value={post.mainImage} /></div>}
-                        <div id="article-content" className="prose font-inter lg:prose-xl text-xl max-w-none">
+                        <div id="article-content" className="prose font-sans lg:prose-xl text-xl max-w-none">
                             <PortableText value={post.body} components={components} />
                         </div>
                     </div>
