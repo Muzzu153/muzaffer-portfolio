@@ -5,7 +5,7 @@ import PhysicalButton from './PhysicalButton';
 
 const FeaturedProject = ({ project, index }) => {
   // Destructure all the new properties from your data
-  const { title, subtitle, description, features, techStack, color, demoUrl, codeUrl } = project;
+  const { title, subtitle, imgSrc, description , features, techStack, color, demoUrl, codeUrl } = project;
   
   const isOdd = index % 2 !== 0;
 
@@ -31,7 +31,7 @@ const FeaturedProject = ({ project, index }) => {
         >
           {/* Replace this with your actual project image */}
           <img 
-            src={`https://placehold.co/1200x800/${color.substring(1)}/000?text=${title}`} 
+            src={imgSrc} 
             alt={`${title} screenshot`} 
             className="w-full h-auto object-cover" 
           />

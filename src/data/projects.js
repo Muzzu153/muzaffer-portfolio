@@ -3,6 +3,7 @@ export const projectsData = [
     id: 1,
     title: "AlRahmaHill",
     subtitle: "Hospital Management System",
+    imgSrc: "/Alrahmahill.jpg",
     description: "A comprehensive hospital management system built with the MERN stack. Features include patient appointment booking with multiple time slots, user registration and authentication, appointment history tracking, prescription management, and a complete admin panel for managing doctors and appointments.",
     features: [
       "Patient appointment booking system",
@@ -21,6 +22,7 @@ export const projectsData = [
     id: 2,
     title: "Tic Tac Toe",
     subtitle: "Interactive Game",
+    imgSrc: "/tic-tac-toe.jpg",
     description: "A classic tic-tac-toe game built with vanilla HTML, CSS, and JavaScript. Features a clean neobrutalist design with smooth animations and responsive gameplay.",
     features: [
       "Clean, neobrutalist UI design",
@@ -38,6 +40,7 @@ export const projectsData = [
     id: 3,
     title: "Todo App",
     subtitle: "Task Management",
+    imgSrc: "/todolist.jpg",
     description: "A modern todo application built with HTML, CSS, JavaScript, and bundled with Webpack. Features task creation, completion tracking, and local storage persistence.",
     features: [
       "Add, edit, and delete tasks",

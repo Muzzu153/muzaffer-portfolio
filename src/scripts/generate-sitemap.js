@@ -29,7 +29,7 @@ async function generate() {
   sitemap.end();
 
   const xml = await streamToPromise(sitemap).then(data => data.toString());
-  fs.writeFileSync("./public/sitemap.xml", xml);
+  fs.writeFileSync("./public/sitemap-main.xml", xml);
 
   console.log("✅ Sitemap generated with", posts.length, "blog posts");
 }
