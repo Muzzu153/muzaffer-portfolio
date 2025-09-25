@@ -18,17 +18,17 @@ const routes = createBrowserRouter([
         index: true, element: <HomePage />,
       },
       {
-        path: "home", element: <Suspense fallback={<div>Loading...</div>} > <HomePage /></Suspense>,
+        path: "home", element: <Suspense > <HomePage /></Suspense>,
       },
       {
         path: "blog",
-        element: <Suspense fallback={<div>Loading...</div>}>
+        element: <Suspense >
           <BlogListPage />
         </Suspense>,
       },
       {
         path: "blog/:slug",
-        element: <Suspense fallback={<div>Loading...</div>} >  <BlogPostPage /></Suspense>
+        element: <Suspense><BlogPostPage /></Suspense>
       },
     ]
   },
