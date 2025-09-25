@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import HomePage from './components/pages/HomePage.jsx'
 import { lazy, Suspense } from 'react'
 
-const BlogListPage = lazy(() => import("./components/pages/BlogListPage.jsx"))
+const HomePage = lazy(()=>import('./components/pages/HomePage.jsx',{eager: true})) 
+const BlogListPage = lazy(() => import("./components/pages/BlogListPage.jsx", {eager: true}))
 const BlogPostPage = lazy(() => import("./components/pages/BlogPostPage.jsx"))
 
 const routes = createBrowserRouter([
@@ -15,7 +15,10 @@ const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true, element: <HomePage />,
+        index: true, element: 
+        <Suspense>
+          <HomePage />
+        </Suspense>,
       },
       {
         path: "home", element: <Suspense > <HomePage /></Suspense>,
