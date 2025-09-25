@@ -1,10 +1,5 @@
 import React, { lazy, Suspense } from 'react'
 import Hero from '../sections/Hero'
-// import Section from '../sections/Section'
-// import Skills from '../sections/Skills'
-// import Services from '../sections/Services'
-// import Projects from '../sections/Projects'
-// import Contact from '../sections/Contact'
 
 const Section = lazy(() => import("../sections/Section"))
 const Skills = lazy(() => import("../sections/Skills"))

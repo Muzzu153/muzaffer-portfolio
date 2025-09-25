@@ -2,11 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { RouterProvider } from 'react-router-dom'
-import { createBrowserRouter } from "react-router-dom";
-import BlogListPage from './components/pages/BlogListPage.jsx'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import HomePage from './components/pages/HomePage.jsx'
-import BlogPostPage from './components/pages/BlogPostPage.jsx'
+import { lazy, Suspense } from 'react'
+
+const BlogListPage = lazy(() => import("./components/pages/BlogListPage.jsx"))
+const BlogPostPage = lazy(() => import("./components/pages/BlogPostPage.jsx"))
 
 const routes = createBrowserRouter([
   {
@@ -21,11 +22,13 @@ const routes = createBrowserRouter([
       },
       {
         path: "blog",
-        element: <BlogListPage />,
+        element: <Suspense fallback={<div>Loading...</div>}>
+                    <BlogListPage />
+                 </Suspense>,
       },
       {
         path: "blog/:slug",
-        element: <BlogPostPage />
+        element: <Suspense fallback={<div>Loading...</div>} >  <BlogPostPage /></Suspense>
       },
     ]
   },
