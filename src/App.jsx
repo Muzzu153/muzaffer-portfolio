@@ -5,15 +5,20 @@ import Projects from "./components/sections/Projects";
 import Services from "./components/sections/Services";
 import Navbar from "./components/ui/Navbar";
 import Contact from "./components/sections/Contact";
-import Footer from "./components/sections/Footer";
+import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
+
+const Footer = lazy(()=>import("./components/sections/Footer"))
 
 function Layout() {
   return (
     <div className="bg-light font-press text-dark">
       <Navbar />
       <Outlet />
+
+    <Suspense fallback={<div>Loading...</div>}>
       <Footer />
+    </Suspense>
     </div>
   );
 }
