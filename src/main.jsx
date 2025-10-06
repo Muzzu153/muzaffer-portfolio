@@ -3,10 +3,6 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createRootRoute, createRoute, createRouter, RouterProvider, lazyRouteComponent } from '@tanstack/react-router'
-// import HomePage from './components/pages/HomePage.jsx'
-// import BlogListPage from './components/pages/BlogListPage.jsx'
-// import BlogPostPage from './components/pages/BlogPostPage.jsx'
-
 
 const rootRoute = createRootRoute({
   component: App
