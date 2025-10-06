@@ -1,17 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { urlFor } from '../../sanityClient'; // Our image helper
+import { Link } from '@tanstack/react-router';
 import PhysicalButton from './PhysicalButton';
 import BlogImage from './BlogImage';
 
 const ArticleCard = ({ post }) => {
+  console.log("Post slug:", post.slug.current)
   if (!post) return null;
 
   return (
     <div className="bg-white border-4 border-dark shadow-neo transition-transform duration-300 hover:scale-[1.02] hover:rotate-[-1deg]">
       {/* Main Image */}
       {post.mainImage && (
-        <Link to={`/blog/${post.slug.current}`}>
+        <Link 
+          to={"/blog/$slug"}
+          params={{slug: post.slug.current}}
+          >
           <div className="w-full object-cover">
             <BlogImage value={post.mainImage} />
           </div>
@@ -27,7 +29,10 @@ const ArticleCard = ({ post }) => {
             day: 'numeric',
           })}
         </p>
-        <Link to={`/blog/${post.slug.current}`}>
+        <Link 
+          to={"/blog/$slug"}
+          params={{slug: post.slug.current}}
+          >
           <h2 className="font-press text-xs sm:text-sm md:text-base uppercase mb-4 hover:text-primary transition-colors">
             {post.title}
           </h2>

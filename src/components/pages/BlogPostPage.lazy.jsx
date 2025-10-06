@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // 1. Import useParams
-import sanityClient from '../../sanityClient'; // Our configured client
-
-// Import all the UI components we'll need for this page
+import { useState, useEffect, Suspense, lazy } from 'react';
+import { createLazyRoute, useParams } from '@tanstack/react-router';
+import sanityClient from '../../sanityClient.js'; // Our configured client
 import { PortableText } from '@portabletext/react';
-import slugify from '../../utils/helpers';
-import RetroProgressBar from '../ui/RetroProgress';
-import BlogImage from '../ui/BlogImage';
-import CodeBlock from '../ui/CodeBlock';
-import TableOfContents from '../ui/TableOfContents';
-import Section from '../sections/Section';
+import slugify from '../../utils/helpers.js';
+import BlogImage from '../ui/BlogImage.jsx';
+import Section from '../sections/Section.jsx';
+
+const TableOfContents = lazy(() => import('../ui/TableOfContents.jsx'))
+const RetroProgressBar = lazy(() => import('../ui/RetroProgress.jsx'));
+// const CodeBlock = lazy(() => import('../ui/CodeBlock.jsx'));
+import CodeBlock from '../ui/CodeBlock.jsx';
 
 const BlogPostPage = () => {
+    console.log('🚀 BlogPostPage component is rendering!');
     const [post, setPost] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     // 2. Get the 'slug' from the URL
-    const { slug } = useParams();
+    const { slug } = useParams({ from: '/blog/$slug' });
+
+    console.log('📝 Slug from URL:', slug);
 
     // 3. Use useEffect to fetch data when the component loads or the slug changes
     useEffect(() => {
@@ -100,7 +103,9 @@ const BlogPostPage = () => {
     // 6. Render the final page with the fetched data
     return (
         <>
-            <RetroProgressBar />
+            <Suspense>
+                <RetroProgressBar />
+            </Suspense>
             <div className="max-w-6xl mx-auto px-5 md:py-20  my-15">
 
                 <div className="text-left md:mb-8 lg:mb-12 max-w-3xl ">
@@ -111,13 +116,16 @@ const BlogPostPage = () => {
                 <div className="flex flex-col lg:flex-row lg:gap-15 ">
                     <div className="w-full  lg:w-3/4 md:pr-30 text-left mt-8 lg:mt-0">
                         {post.mainImage && <div className="mb-12"><BlogImage value={post.mainImage} /></div>}
+
                         <div id="article-content" className="prose font-sans lg:prose-xl text-xl max-w-none">
                             <PortableText value={post.body} components={components} />
                         </div>
                     </div>
                     <div className="hidden lg:block">
                         <div className="sticky top-35">
-                            <TableOfContents blocks={post.body} />
+                            <Suspense>
+                                <TableOfContents blocks={post.body} />
+                            </Suspense>
                         </div>
                     </div>
                 </div>
@@ -126,5 +134,9 @@ const BlogPostPage = () => {
         </>
     );
 };
+
+export const Route = createLazyRoute('/blog')({
+    component: BlogPostPage,
+})
 
 export default BlogPostPage;

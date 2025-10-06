@@ -1,4 +1,3 @@
-import React from 'react';
 import ExternalLinkIcon from '../../assets/icons/ExternalLinkIcon';
 import GitHubIcon from '../../assets/icons/GitHubIcon';
 import PhysicalButton from './PhysicalButton';

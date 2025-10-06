@@ -11,24 +11,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@forge42/seo-tools": "^1.4.5",
     "@portabletext/react": "^4.0.3",
     "@sanity/client": "^7.11.2",
     "@sanity/image-url": "^1.2.0",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@tailwindcss/vite": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.14",
+    "@tanstack/react-router": "^1.132.33",
+    "@tanstack/react-router-devtools": "^1.132.33",
     "autoprefixer": "^10.4.21",
-    "fs": "^0.0.1-security",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.1",
     "react-syntax-highlighter": "^15.6.6",
     "sitemap": "^8.0.0",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@tanstack/router-plugin": "^1.132.33",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",
@@ -36,6 +36,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "rollup-plugin-visualizer": "^6.0.4",
     "vite": "^7.1.2"
   }
 }

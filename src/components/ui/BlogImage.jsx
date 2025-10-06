@@ -1,4 +1,3 @@
-import React from 'react';
 import { urlFor } from '../../sanityClient'; // We will create this helper function next
 
 const BlogImage = ({ value }) => {

@@ -1,7 +1,8 @@
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { darcula, dark, pojoaque, tomorrow, vs, xcode } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { atomDark, coy, duotoneDark, duotoneEarth, duotoneForest, duotoneLight, duotoneSea, duotoneSpace, funky, okaidia, prism, twilight, xonokai } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
+import { xonokai } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+SyntaxHighlighter.registerLanguage('jsx',  jsx)
 
 const CodeBlock = ({ value }) => {
   const { code, language } = value;

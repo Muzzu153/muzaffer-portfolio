@@ -1,4 +1,3 @@
-import React from 'react';
 import { useScrollProgress } from '../../hooks/useScrollProgess';
 
 // A helper function to determine the color based on progress percentage.

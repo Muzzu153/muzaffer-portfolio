@@ -1,9 +1,8 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import PhysicalButton from "../ui/PhysicalButton";
 import NavItem from "./NavItem";
 import { personalData } from "../../data/personal";
-import { href, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "@tanstack/react-router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +28,7 @@ const Navbar = () => {
   const blogPageLinks = [
     {
       name: "home",
-      href: "/home",
+      href: "/",
     },
   ]
 
@@ -67,9 +66,6 @@ const Navbar = () => {
   const handleLinkClick = () => {
     setIsOpen(false);
   };
-
-
-
 
   // Switch nav links based on current page
   useEffect(() => {
