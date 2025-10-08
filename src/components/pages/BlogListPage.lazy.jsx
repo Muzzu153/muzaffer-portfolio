@@ -1,43 +1,27 @@
-import { useState, useEffect } from 'react';
-import sanityClient from '../../sanityClient';
 import ArticleCard from '../ui/ArticleCard';
 import Section from '../sections/Section';
 import { createLazyRoute } from '@tanstack/react-router';
+import { useQuery } from '@tanstack/react-query';
+import { blogKeys } from '../../utils/queryKeys';
+import { fetchBlogList } from '../../api/blog';
+import { useHead } from '@unhead/react';
 
 const BlogListPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: posts } = useQuery({
+    queryKey: blogKeys.lists(),
+    queryFn: fetchBlogList,
+  })
 
-  useEffect(() => {
-    // This is the GROQ query to fetch our posts
-    const query = `*[_type == "post"] | order(publishedAt asc) {
-      _id,
-      title,
-      slug,
-      publishedAt,
-      mainImage {
-        asset,
-        alt
-      },
-      // Generate a plain text excerpt from the first block of the body
-      "excerpt": pt::text(body[0])
-    }`;
-
-    sanityClient.fetch(query)
-      .then((data) => {
-        setPosts(data);
-        setIsLoading(false);
-      })
-      .catch(console.error);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <Section>
-        <h1 className="text-center font-press text-4xl uppercase">Loading Posts...</h1>
-      </Section>
-    );
-  }
+   useHead({
+    title: 'Blog Posts | My Blog',
+    meta: [
+      { name: 'description', content: 'Read our latest blog posts about React, web development, and more' },
+      { property: 'og:title', content: 'Blog Posts | My Blog' },
+      { property: 'og:description', content: 'Read our latest blog posts' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://example.com/blog' },
+    ],
+  })
 
   return (
     <Section id="blog">
@@ -53,7 +37,7 @@ const BlogListPage = () => {
   );
 };
 
-export const Route = createLazyRoute('/blog/$slug')({
+export const Route = createLazyRoute('/blog')({
   component: BlogListPage
 })
 
