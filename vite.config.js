@@ -13,15 +13,6 @@ export default defineConfig({
     })
   ],
 
-  ssgOptions: {
-    script: 'async',
-    formatting: 'minify',
-    crittersOptions: {
-      reduceInlineStyles: false,
-    },
-  },
-
-
   build: {
     minify: 'esbuild',
     sourcemap: false,
