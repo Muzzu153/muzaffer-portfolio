@@ -10,10 +10,10 @@ const ArticleCard = ({ post }) => {
     <div className="bg-white border-4 border-dark shadow-neo transition-transform duration-300 hover:scale-[1.02] hover:rotate-[-1deg]">
       {/* Main Image */}
       {post.mainImage && (
-        <Link 
+        <Link
           to={"/blog/$slug"}
-          params={{slug: post.slug.current}}
-          >
+          params={{ slug: post.slug }}
+        >
           <div className="w-full object-cover">
             <BlogImage value={post.mainImage} />
           </div>
@@ -29,10 +29,10 @@ const ArticleCard = ({ post }) => {
             day: 'numeric',
           })}
         </p>
-        <Link 
+        <Link
           to={"/blog/$slug"}
-          params={{slug: post.slug.current}}
-          >
+          params={{ slug: post.slug }}
+        >
           <h2 className="font-press text-xs sm:text-sm md:text-base uppercase mb-4 hover:text-primary transition-colors">
             {post.title}
           </h2>
