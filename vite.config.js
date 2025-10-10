@@ -12,6 +12,16 @@ export default defineConfig({
       gzipSize: true,
     })
   ],
+
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+    crittersOptions: {
+      reduceInlineStyles: false,
+    },
+  },
+
+
   build: {
     minify: 'esbuild',
     sourcemap: false,
@@ -33,7 +43,6 @@ export default defineConfig({
 
           if (id.includes('@sanity/image-url')) return 'sanity-image';
           
-          // The big problem: content-renderer is 602KB
           if (id.includes('@portabletext') ) {
             return 'content-renderer'
           }
