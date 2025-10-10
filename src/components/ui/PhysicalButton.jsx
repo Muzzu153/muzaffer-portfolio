@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhysicalButton = ({ children, href, variant = 'secondary', size }) => {
+const PhysicalButton = ({children, href, variant = 'secondary', size }) => {
   // Define base and variant-specific classes
   const baseClasses = "btn-border relative inline-block cursor-pointer no-underline transition-all duration-150 ease-in-out font-press uppercase text-white ";
   
@@ -10,7 +8,7 @@ const PhysicalButton = ({ children, href, variant = 'secondary', size }) => {
   };
 
   return (
-    <a href={href} className={`${baseClasses} ${variantClasses[variant]} ${size}`}>
+    <a href={href}  className={`${baseClasses} ${variantClasses[variant]} ${size}`}>
       {children}
     </a>
   );

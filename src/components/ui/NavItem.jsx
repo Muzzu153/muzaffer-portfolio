@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 
 const NavItem = ({ link, activeSection, className }) => {
     const isActive = activeSection === link.href.replace(/^\/|^#/, "");

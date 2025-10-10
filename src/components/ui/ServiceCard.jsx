@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ServiceCard = ({ service, index }) => {
   const { icon, title, description } = service;
 

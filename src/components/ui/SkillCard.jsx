@@ -1,5 +1,3 @@
-import React from 'react';
-
 // This component now receives a simple `logoSrc` string
 const SkillCard = ({ name, logoSrc }) => {
   return (

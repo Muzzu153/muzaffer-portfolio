@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import slugify from '../../utils/helpers.js';
 
 const TableOfContents = ({ blocks }) => {
@@ -46,10 +46,10 @@ const TableOfContents = ({ blocks }) => {
     }
     // --- RENDER LOGIC ---
     return (<>
-        {/* ============================================= /}
-{/ 1. Desktop Version: Sticky Sidebar /}
-{/ This is hidden by default and only appears on 'lg' screens and up. /}
-{/ ============================================= */}
+        {/* ============================================= /} */}
+        {/* {/ 1. Desktop Version: Sticky Sidebar /} */}
+        {/* {/ This is hidden by default and only appears on 'lg' screens and up. /} */}
+        {/* ============================================= */}
         <div className="hidden lg:block">
             <h3 className="font-press uppercase text-lg mb-4">On This Page</h3>
             <ul className="space-y-4 text-left ">

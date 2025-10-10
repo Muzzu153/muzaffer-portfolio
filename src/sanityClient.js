@@ -1,9 +1,9 @@
 import imageUrlBuilder from '@sanity/image-url';
 import { createClient } from '@sanity/client';
 
-const sanityClient = createClient({
-  projectId: '3w13g2i1',
-  dataset: 'production',
+export const sanityClient = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECTID,
+  dataset: import.meta.env.VITE_SANITY_DATASET,
   useCdn: true,
   apiVersion: '2025-09-23', // Use a recent API version
 });
@@ -12,4 +12,7 @@ const sanityClient = createClient({
 const builder = imageUrlBuilder(sanityClient);
 export const urlFor = (source) => builder.image(source);
 
-export default sanityClient;
+export function getImageUrl(source, width = 1200, height = 630) {
+  if (!source) return null
+  return urlFor(source).width(width).height(height).url()
+}

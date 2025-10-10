@@ -1,4 +1,5 @@
-import React, { lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
+import { createLazyRoute } from '@tanstack/react-router'
 import Hero from '../sections/Hero'
 
 const Section = lazy(() => import("../sections/Section"))
@@ -6,6 +7,7 @@ const Skills = lazy(() => import("../sections/Skills"))
 const Services = lazy(() => import("../sections/Services"))
 const Contact = lazy(() => import("../sections/Contact"))
 const Projects = lazy(() => import("../sections/Projects"))
+
 
 const HomePage = () => {
     return (
@@ -30,5 +32,9 @@ const HomePage = () => {
         </div>
     )
 }
+
+export const Route = createLazyRoute('/')({
+    component: HomePage
+})
 
 export default HomePage
