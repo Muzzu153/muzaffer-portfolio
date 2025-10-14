@@ -6,12 +6,14 @@ import { visualizer } from 'rollup-plugin-visualizer'
 export default defineConfig({
   plugins: [
     react(),
-    visualizer({ 
+    visualizer({
       open: true,
       filename: 'dist/stats.html',
       gzipSize: true,
     })
   ],
+
+  server: { port: 4173 },
 
   build: {
     minify: 'esbuild',
@@ -23,29 +25,29 @@ export default defineConfig({
           if (id.includes('react') || id.includes('react-dom')) {
             return 'react-vendor'
           }
-          
+
           // Router separate
           if (id.includes('@tanstack/react-router')) {
             return 'router'
           }
-          
+
           // Sanity separate
           if (id.includes('@sanity/client')) return 'sanity-core';
 
           if (id.includes('@sanity/image-url')) return 'sanity-image';
-          
-          if (id.includes('@portabletext') ) {
+
+          if (id.includes('@portabletext')) {
             return 'content-renderer'
           }
 
-          if(id.includes('refractor') ){
+          if (id.includes('refractor')) {
             return 'refractor'
           }
 
-          if( id.includes('SyntaxHighlighter') || id.includes('prism') || id.includes('Prism') || id.includes('react-syntax-highlighter')){
+          if (id.includes('SyntaxHighlighter') || id.includes('prism') || id.includes('Prism') || id.includes('react-syntax-highlighter')) {
             return 'highlighter'
           }
-          
+
           // Everything else from node_modules
           // if (id.includes('node_modules')) {
           //   return 'vendor'
